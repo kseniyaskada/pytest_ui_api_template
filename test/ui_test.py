@@ -1,14 +1,16 @@
 import allure
 from pages.MainPage import MainPage
 
-
+@allure.title("Авторизация")
+@allure.story("Авторизация")
 def auth_test(browser):
     main_page = MainPage(browser)
 
     with allure.step("Проверить, что URL заканчивается на /home"):
         assert main_page.get_current_url().endswith("home")
 
-
+@allure.title("Открытие страницы поиска")
+@allure.story("Переход на страницу")
 def search_page_test(browser):
     main_page = MainPage(browser)
     search_page = main_page.open_search_page()
@@ -16,7 +18,8 @@ def search_page_test(browser):
     with allure.step("Проверить, что элемент отображается на странице"):
         assert search_page.is_displayed()
 
-
+@allure.title("Создание новой коллекции")
+@allure.story("Создание новой сущности")
 def create_new_collection_test(browser):
     main_page = MainPage(browser)
     result = main_page.create_collection()
@@ -26,7 +29,8 @@ def create_new_collection_test(browser):
 
     main_page.delete_collection()
 
-
+@allure.title("Создание нового документа")
+@allure.story("Создание новой сущности")
 def create_document_test(browser):
 
     main_page = MainPage(browser)
@@ -37,7 +41,8 @@ def create_document_test(browser):
         assert result.is_displayed()
     main_page.delete_collection()
 
-
+@allure.title("Удаление коллекции")
+@allure.story("Удаление сущности")
 def delete_collection_test(browser):
 
     main_page = MainPage(browser)
