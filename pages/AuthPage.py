@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -15,10 +16,12 @@ class AuthPage:
         )
         self.__driver = driver
 
-    def go(self):
+    @allure.step("Перейти на страницу авторизации")
+    def go(self) -> None:
         self.__driver.get(self.__url)
 
-    def login_as(self, email: str, password: str):
+    @allure.step("Авторизоваться под {email}:{password}")
+    def login_as(self, email: str, password: str) -> None:
         self.__driver.find_element(
             By.CSS_SELECTOR, "#username").send_keys(email)
         self.__driver.find_element(
