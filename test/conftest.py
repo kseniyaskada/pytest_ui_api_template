@@ -1,11 +1,14 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 import allure
 import pytest
+from pages.AuthPage import AuthPage
+from pages.ApiClient import ApiClient
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
-from pages.AuthPage import AuthPage
-from pages.ApiClient import ApiClient
 from config import USER_LOGIN, USER_PASSWORD
 
 @pytest.fixture

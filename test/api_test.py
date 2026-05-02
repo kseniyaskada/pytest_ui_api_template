@@ -1,6 +1,8 @@
 import allure
+import pytest
 from config import BASE_URL, USER_TOKEN
 
+@pytest.mark.api
 @allure.title("Создание новой коллекции")
 @allure.story("Создание новой сущности")
 def test_create_collection(api_client):
@@ -14,6 +16,7 @@ def test_create_collection(api_client):
     
     api_client.delete_collection(collection_id)
 
+@pytest.mark.api
 @allure.title("Создание нового документа")
 @allure.story("Создание новой сущности")
 def test_create_document(api_client):
@@ -28,6 +31,7 @@ def test_create_document(api_client):
         assert response_doc.json()["data"]["title"] == "Новый документ"
     api_client.delete_collection(collection_id)
 
+@pytest.mark.api
 @allure.title("Содание ссылки для доступа к коллекции")
 @allure.story("Создание ссылки")
 def test_create_share_link(api_client):
@@ -41,6 +45,7 @@ def test_create_share_link(api_client):
         assert response.status_code == 200
     api_client.delete_collection(collection_id)
 
+@pytest.mark.api
 @allure.title("Удаление коллекции")
 @allure.story("Удаление сущности")
 def test_delete_collection(api_client):
@@ -50,6 +55,7 @@ def test_delete_collection(api_client):
     with allure.step("Проверить, что статус код равен 200"):
         assert response.status_code == 200
 
+@pytest.mark.api
 @allure.title("Добавление коментария в коллекцию")
 @allure.story("Добавление комментария")
 def test_create_comment(api_client):
